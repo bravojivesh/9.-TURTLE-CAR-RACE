@@ -1,5 +1,5 @@
 # I used car as a sub-class of Turtle. Angela did not do it that way (see comments below).
-# It was getting confusing so I create separately.
+# It was getting confusing so I will create car and main separately.
 import random
 import turtle as tu
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
@@ -18,7 +18,8 @@ class Car(tu.Turtle): #no need to create a subclass.
         self.penup()
         rand1 = random.randint(0, 5)
         self.color(COLORS[rand1])
-        rand_x = random.choice(X_CORD)
+        rand_x = random.choice(X_CORD) #this actually can not be random. Because when we are moving ahead, if a car
+        #appears suddenly, the game is over. In "car", I have fixed this by making static
         rand_y = random.choice(Y_CORD)
         self.goto(rand_x, rand_y)
         # self.car_list.append(self)
@@ -26,7 +27,8 @@ class Car(tu.Turtle): #no need to create a subclass.
         # print ("xcord is:", self.xcor(), "and ycord is: ", self.ycor())
 
 
-    def move_car(self,list): # no need a param of list actually.
+    def move_car(self,list): # no need a param of list actually if you call turtle() in the class initialization and not
+        # by creating a sub-class
         for x in list:
             print ("Before", x.xcor(), x.ycor())
             x.backward(30)
